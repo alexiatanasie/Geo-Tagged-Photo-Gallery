@@ -1,0 +1,29 @@
+#map { 
+    height: 600px; 
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.controls { 
+    /* control harta */
+    margin: 10px;
+    text-align: center;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* VAD CA NU FUNCTIONEAZA// VREAU SA FIE UN FUNDAL SUB HARTA */
+.background{
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    z-index: 0;
+    background: url(assets/images/fundal.jpg) center;
+    background-size: cover;
+}
+
