@@ -13,8 +13,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Background layer */
-    background: url('assets/images/fundal.jpg') center no-repeat;
+    z-index: 0; 
     background-size: cover;
     opacity: 0.9; 
 }
@@ -24,7 +23,7 @@ body {
     background-color: #5b4c3b; 
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
+   justify-content: flex-start; 
     align-items: center;
     z-index: 2;
 }
@@ -33,6 +32,7 @@ body {
     display: flex;
     align-items: center; 
     gap: 20px; 
+    justify-content: space-between;
 }
 
 
@@ -43,8 +43,10 @@ body {
 
 
 .buttons {
+    order: 1;
     display: flex;
     gap: 10px;
+    
 }
 
 .buttons .btn {
@@ -56,9 +58,6 @@ body {
     transition: all 0.3s ease;
     
 }
-
-
-
 
 #map {
     height: 600px;
