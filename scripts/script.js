@@ -32,6 +32,10 @@ window.onload = () => {
   
     document.getElementById("uploadBtn").addEventListener("click", uploadPhoto);
     document.getElementById("downloadBtn").addEventListener("click", downloadPhoto);
+
+
+    
+
 };
 
 
