@@ -35,25 +35,27 @@ window.onload = () => {
 };
 
 
-function uploadPhoto() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*'; 
-    input.onchange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            alert(`File "${file.name}" selected for upload.`);
-        }
-    };
-    input.click();
-}
+// function uploadPhoto() {
+//     const input = document.createElement('input');
+//     input.type = 'file';
+//     input.accept = 'image/*'; 
+//     input.onchange = (event) => {
+//         const file = event.target.files[0];
+//         if (file) {
+//             alert(`File "${file.name}" selected for upload.`);
+//         }
+//     };
+//     input.click();
+// }
 
-//nu merge 
-function downloadPhoto() {
-    const link = document.createElement('a');
-    link.href = 'assets/sample-file.txt'; 
-    link.download = 'sample-file.txt'; 
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
+// //nu merge 
+// //
+// //////////
+// function downloadPhoto() {
+//     const link = document.createElement('a');
+//     link.href = 'assets/sample-file.txt'; 
+//     link.download = 'sample-file.txt'; 
+//     document.body.appendChild(link);
+//     link.click();
+//     document.body.removeChild(link);
+// }
