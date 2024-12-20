@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="scripts/script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -20,7 +22,25 @@
                 <img src="assets/images/logo_v2.jpg" alt="Logo" height="40" class="me-2">
             <span class="fw-bold fst-italic fs-4">Our Memories Map</span>
             </a>
-            
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item dropdown">
+                    <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      Regions
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" href="#">Africa</a></li>
+                      <li><a class="dropdown-item" href="#">Asia</a></li>
+                      <li><a class="dropdown-item" href="#">Europe</a></li>
+                      <li><a class="dropdown-item" href="#">North America</a></li>
+                      <li><a class="dropdown-item" href="#">Oceania</a></li>
+                      <li><a class="dropdown-item" href="#">South America</a></li>
+                      <li><a class="dropdown-item" href="#">All Regions</a></li>
+
+                    </ul>
+                  </li>
+                </ul>
+              </div>
         </div>
     </nav>
 
@@ -34,9 +54,13 @@
                 <canvas id="imageCanvas"></canvas>
             </div>
             <div class="canvas-right">
-                <p id="location-description"></p>
-                <p><strong>Latitude:</strong> <span id="lat"></span></p>
-                <p><strong>Longitude:</strong> <span id="lng"></span></p>
+                <div class="info-column">
+                    <p id="description" style="font-weight: bold;"></p>
+                    <p><strong>Latitude:</strong> <span id="lat"></span></p>
+                    <p><strong>Longitude:</strong> <span id="lng"></span></p>
+                    <button type="button" id="backToMap" class="btn btn-primary btn-sm">Back to Map</button>
+                </div>
+
             </div>
         </div>
     </div>
