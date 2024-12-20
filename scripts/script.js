@@ -148,8 +148,8 @@ window.onload = () => {
 
     document.querySelectorAll(".dropdown-item").forEach(item => {
         item.addEventListener("click", () => {
-            const region = item.textContent.trim(); // Obținem regiunea selectată
-            displayPins(region === "All Regions" ? "All Regions" : region); // Verificăm opțiunea „All Regions”
+            const region = item.textContent.trim();
+            displayPins(region === "All Regions" ? "All Regions" : region); 
         });
     });
 
