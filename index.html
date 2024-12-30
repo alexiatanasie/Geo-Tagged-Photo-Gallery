@@ -48,16 +48,18 @@
     <div id="map"></div>
 
    
-    <div id="canvas-container">
-        <div class="content-wrapper">
-            <div class="canvas-left">
-                <canvas id="imageCanvas"></canvas>
+    <div id="canvasDisplay">
+        <div class="canvasContainer">
+            <div class="canvasLeft">
+                <canvas id="canvas"></canvas>
             </div>
-            <div class="canvas-right">
-                <div class="info-column">
+            <div class="canvasRight">
+                <div class="descriptionImage">
                     <p id="description" style="font-weight: bold;"></p>
-                    <p><strong>Latitude:</strong> <span id="lat"></span></p>
-                    <p><strong>Longitude:</strong> <span id="lng"></span></p>
+                    <p>Latitude:
+                        <span id="latitude"></span></p>
+                    <p>Longitude:
+                        <span id="longitude"></span></p>
                     <button type="button" id="backToMap" class="btn btn-primary btn-sm">Back to Map</button>
                 </div>
 
