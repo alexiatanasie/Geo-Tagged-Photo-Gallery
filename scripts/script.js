@@ -122,29 +122,34 @@ map.on('click', onMapClick);
     }
 
     function displayImage(photo) {
-        const canvas = document.getElementById("canvas");
-        const canvasDisplay = document.getElementById("canvasDisplay");
-        const context = canvas.getContext("2d");
-        const description = document.getElementById("description");
+
+        let canvas = document.getElementById("canvas");
+        let canvasDisplay = document.getElementById("canvasDisplay");
+        let context = canvas.getContext("2d");
+        let description = document.getElementById("description");
       
 
-        const latitude = document.getElementById("latitude");
+        let latitude = document.getElementById("latitude");
 
-        const longitude = document.getElementById("longitude");
+        let longitude = document.getElementById("longitude");
 
 
         canvasDisplay.style.display = "block";
 
-        description.textContent = photo.name;
+        description.innerHTML = photo.name;
 
 
-        const image = new Image();
+
+        let image = new Image();
 
         image.src = `assets/images/${photo.file}`;
 
+        latitude.innerHTML = photo.lat;
+        longitude.innerHTML = photo.lng;
+
         image.onload = () => {
 
-            const adjust = canvas.parentElement; 
+            let adjust = canvas.parentElement; 
 
             canvas.width = adjust.clientWidth;
             canvas.height = adjust.clientHeight;
@@ -152,15 +157,15 @@ map.on('click', onMapClick);
 
             context.clearRect(0, 0, canvas.width, canvas.height);
 
-            const min = Math.min(canvas.width / image.width, canvas.height / image.height);
-            const x = (canvas.width - image.width * min) / 2;
-            const y = (canvas.height - image.height * min) / 2;
+            let min = Math.min(canvas.width/image.width, canvas.height/image.height);
+            let x = (canvas.width - image.width*min)/2;
+            let y = (canvas.height - image.height*min)/2;
 
-            context.drawImage(image,x, y, image.width * min, image.height * min);
+            context.drawImage(image,x, y, image.width*min, image.height*min);
+
         };
 
-        latitude.textContent = photo.lat;
-        longitude.textContent = photo.lng;
+    
     }
 
     document.getElementById("backToMap").addEventListener("click", () => {
