@@ -12,6 +12,17 @@ window.onload = () => {
         popupAnchor: [0, -30],
     });
 
+    var popup = L.popup();
+
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+}
+
+map.on('click', onMapClick);
+
     const photos = [
         { name: "Brandenburg Gate, Berlin, Germany", file: "Brandenburg Gate Berlin.jpg", lat: 52.5163, lng: 13.3777, region: "Europe" },
         { name: "Colosseum, Rome, Italy", file: "coloseum.jpg", lat: 41.8902, lng: 12.4922, region: "Europe" },
@@ -111,39 +122,50 @@ window.onload = () => {
     }
 
     function displayImage(photo) {
-        const canvasContainer = document.getElementById("canvas-container");
-        const canvas = document.getElementById("imageCanvas");
-        const ctx = canvas.getContext("2d");
-        const descriptionElem = document.getElementById("description");
+        const canvas = document.getElementById("canvas");
+        const canvasDisplay = document.getElementById("canvasDisplay");
+        const context = canvas.getContext("2d");
+        const description = document.getElementById("description");
+      
 
-        const latElem = document.getElementById("lat");
-        const lngElem = document.getElementById("lng");
+        const latitude = document.getElementById("latitude");
 
-
-        canvasContainer.style.display = "block";
-        descriptionElem.textContent = photo.name;
+        const longitude = document.getElementById("longitude");
 
 
-        const img = new Image();
-        img.src = `assets/images/${photo.file}`;
-        img.onload = () => {
-            canvas.width = canvas.parentElement.clientWidth;
-            canvas.height = canvas.parentElement.clientHeight;
+        canvasDisplay.style.display = "block";
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
-            const x = (canvas.width - img.width * scale) / 2;
-            const y = (canvas.height - img.height * scale) / 2;
+        description.textContent = photo.name;
 
-            ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+
+        const image = new Image();
+
+        image.src = `assets/images/${photo.file}`;
+
+        image.onload = () => {
+
+            const adjust = canvas.parentElement; 
+
+            canvas.width = adjust.clientWidth;
+            canvas.height = adjust.clientHeight;
+
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            const min = Math.min(canvas.width / image.width, canvas.height / image.height);
+            const x = (canvas.width - image.width * min) / 2;
+            const y = (canvas.height - image.height * min) / 2;
+
+            context.drawImage(image,x, y, image.width * min, image.height * min);
         };
-        latElem.textContent = photo.lat;
-        lngElem.textContent = photo.lng;
+
+        latitude.textContent = photo.lat;
+        longitude.textContent = photo.lng;
     }
 
     document.getElementById("backToMap").addEventListener("click", () => {
-        const canvasContainer = document.getElementById("canvas-container");
-        canvasContainer.style.display = "none";
+        const canvasDisplay = document.getElementById("canvasDisplay");
+        canvasDisplay.style.display = "none";
     });
 
     document.querySelectorAll(".dropdown-item").forEach(item => {
