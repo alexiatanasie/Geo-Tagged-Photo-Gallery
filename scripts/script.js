@@ -33,7 +33,7 @@ map.on('click', onMapClick);
         { name: "Hollywood, USA", file: "hollywood.jpg", lat: 34.0928, lng: -118.3287, region: "North America" },
         { name: "Kyoto, Japan", file: "kyoto.jpg", lat: 35.0116, lng: 135.7681, region: "Asia" },
         { name: "Times Square, New York, USA", file: "newyorkk.jpg", lat: 40.7128, lng: -74.0060, region: "North America" },
-        { name: "Palace of Parliament, Bucharest, Romania", file: "parlament.jpg", lat: 44.4268, lng: 26.1025, region: "Europe" },
+        { name: "Palace of Parliament, Bucharest, Romania", file: "parlament.jpg", lat: 44.426315, lng: 26.11195, region: "Europe" },
         { name: "Desert View, Palm Springs, USA", file: "palmsprings.jpg", lat: 33.8303, lng: -116.5453, region: "North America" },
         { name: "Leaning Tower, Pisa, Italy", file: "pisa.jpg", lat: 43.7228, lng: 10.4017, region: "Europe" },
         { name: "Charles Bridge, Prague, Czech Republic", file: "prague.jpg", lat: 50.0755, lng: 14.4378, region: "Europe" },
@@ -42,9 +42,9 @@ map.on('click', onMapClick);
         { name: "Seaside View, Jeddah, Saudi Arabia", file: "Jeddah, Saudi Arabia.jpg", lat: 21.4858, lng: 39.1925, region: "Asia" },
         { name: "Tropical Beach, Île aux Nattes, Madagascar", file: "L'île aux Nattes _ le paradis de Madagascar .jpg", lat: -17.0500, lng: 49.8500, region: "Africa" },
         { name: "Luanda, Angola", file: "ANGOLA, LUANDA.jpg", lat: -8.8383, lng: 13.2344, region: "Africa" },
-        { name: "Lusaka, Zambia", file: "Lusaka.jpg", lat: -15.3875, lng: 28.3228, region: "Africa" },
-        { name: "Beachfront, Bali, Indonesia", file: "Bali.jpg", lat: -8.3405, lng: 115.0920, region: "Asia" },
-        { name: "Coastal View, Perth, Australia", file: "Australie - Van trip de Perth à Esperance.jpg", lat: -31.9505, lng: 115.8605, region: "Oceania" },
+        { name: "Lusaka, Zambia", file: "Lusaka.jpg", lat: -15.614317, lng: 27.951807, region: "Africa" },
+        { name: "Beachfront, Bali, Indonesia", file: "Bali.jpg", lat: -8.261408, lng: 115.089338, region: "Asia" },
+        { name: "Perth, Australia", file: "Australie - Van trip de Perth à Esperance.jpg", lat: -31.97348, lng: 116.09773, region: "Oceania" },
         { name: "Urban Landscape, Seoul, South Korea", file: "seoul.jpg", lat: 37.5665, lng: 126.9780, region: "Asia" },
         { name: "Old Town, Lisbon, Portugal", file: "lisabona.jpg", lat: 38.7223, lng: -9.1393, region: "Europe" },
         { name: "Table Mountain, Cape Town, South Africa", file: "Cape Town.jpg", lat: -33.9249, lng: 18.4241, region: "Africa" },
@@ -53,8 +53,8 @@ map.on('click', onMapClick);
         { name: "Desert View, Atacama Desert, Chile", file: "Atacama Desert, Chile.jpg", lat: -24.7725, lng: -69.2658, region: "South America" },
         { name: "Bangui, Central African Republic", file: "Bangui, Central African.jpg", lat: 4.3947, lng: 18.5582, region: "Africa" },
         { name: "Mountain View, Cafayate, Argentina", file: "CAFAYATE, SALTA, ARGENTINA.jpg", lat: -26.0722, lng: -65.9767, region: "South America" },
-        { name: "City Square, Cluj-Napoca, Romania", file: "Cluj.jpg", lat: 46.7700, lng: 23.5899, region: "Europe" },
-        { name: "Nyhavn Canal, Copenhagen, Denmark", file: "copenhagen.jpg", lat: 55.6761, lng: 12.5683, region: "Europe" },
+        { name: "City Square, Cluj-Napoca, Romania", file: "Cluj.jpg", lat: 46.770202, lng: 23.590829, region: "Europe" },
+        { name: "Nyhavn Canal, Copenhagen, Denmark", file: "copenhagen.jpg", lat: 55.679589, lng: 12.591364, region: "Europe" },
         { name: "Downtown, Dubai, UAE", file: "dubai-night.jpg", lat: 25.276987, lng: 55.296249, region: "Asia" },
         { name: "Old Town, Dubrovnik, Croatia", file: "dubrovnik.jpg", lat: 42.6507, lng: 18.0944, region: "Europe" },
         { name: "Castle Hill, Edinburgh, Scotland", file: "Edinburgh Scotland, rainy day.jpg", lat: 55.9533, lng: -3.1883, region: "Europe" },
@@ -95,7 +95,7 @@ map.on('click', onMapClick);
         { name: "Dakar, Senegal", file: "dakar senegal.jpg", lat: 14.6928, lng: -17.4467, region: "Africa" },
         { name: "Old Quarter, Hanoi, Vietnam", file: "hanoi.jpg", lat: 21.0285, lng: 105.8542, region: "Asia" },
         { name: "Mombasa, Kenya", file: "mombasa.jpg", lat: -4.0435, lng: 39.6682, region: "Africa" },
-        { name: "Baiterek Tower, Astana, Kazakhstan", file: "astana.jpg", lat: 51.1694, lng: 71.4491, region: "Asia" }
+        { name: "Baiterek Tower, Astana, Kazakhstan", file: "astana.jpg", lat: 51.127599, lng: 71.428396, region: "Asia" }
     ];
     
     
@@ -122,29 +122,34 @@ map.on('click', onMapClick);
     }
 
     function displayImage(photo) {
-        const canvas = document.getElementById("canvas");
-        const canvasDisplay = document.getElementById("canvasDisplay");
-        const context = canvas.getContext("2d");
-        const description = document.getElementById("description");
+
+        let canvas = document.getElementById("canvas");
+        let canvasDisplay = document.getElementById("canvasDisplay");
+        let context = canvas.getContext("2d");
+        let description = document.getElementById("description");
       
 
-        const latitude = document.getElementById("latitude");
+        let latitude = document.getElementById("latitude");
 
-        const longitude = document.getElementById("longitude");
+        let longitude = document.getElementById("longitude");
 
 
         canvasDisplay.style.display = "block";
 
-        description.textContent = photo.name;
+        description.innerHTML = photo.name;
 
 
-        const image = new Image();
+
+        let image = new Image();
 
         image.src = `assets/images/${photo.file}`;
 
+        latitude.innerHTML = photo.lat;
+        longitude.innerHTML = photo.lng;
+
         image.onload = () => {
 
-            const adjust = canvas.parentElement; 
+            let adjust = canvas.parentElement; 
 
             canvas.width = adjust.clientWidth;
             canvas.height = adjust.clientHeight;
@@ -152,25 +157,25 @@ map.on('click', onMapClick);
 
             context.clearRect(0, 0, canvas.width, canvas.height);
 
-            const min = Math.min(canvas.width / image.width, canvas.height / image.height);
-            const x = (canvas.width - image.width * min) / 2;
-            const y = (canvas.height - image.height * min) / 2;
+            let min = Math.min(canvas.width/image.width, canvas.height/image.height);
+            let x = (canvas.width - image.width*min)/2;
+            let y = (canvas.height - image.height*min)/2;
 
-            context.drawImage(image,x, y, image.width * min, image.height * min);
+            context.drawImage(image,x, y, image.width*min, image.height*min);
+
         };
 
-        latitude.textContent = photo.lat;
-        longitude.textContent = photo.lng;
+    
     }
 
     document.getElementById("backToMap").addEventListener("click", () => {
-        const canvasDisplay = document.getElementById("canvasDisplay");
+        let canvasDisplay = document.getElementById("canvasDisplay");
         canvasDisplay.style.display = "none";
     });
 
     document.querySelectorAll(".dropdown-item").forEach(item => {
         item.addEventListener("click", () => {
-            const region = item.textContent.trim();
+            let region = item.textContent.trim();
             displayPins(region === "All Regions" ? "All Regions" : region); 
         });
     });
